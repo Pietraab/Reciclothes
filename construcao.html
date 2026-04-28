@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reciclothes — Página em Construção</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Allura&family=Archivo+Black&family=Cormorant+Garamond:wght@400;600;700&family=Montserrat:wght@400;500;600;700;800&family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --cream:        #ece8e1;
+      --paper:        #f7f4ef;
+      --white-warm:   #fffdf9;
+      --taupe:        #a28b77;
+      --taupe-soft:   #b7a693;
+      --brown:        #4b2f15;
+      --brown-deep:   #231411;
+      --brown-muted:  #6c5242;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      height: 100%;
+      font-family: 'Montserrat', sans-serif;
+      overflow: hidden;
+    }
+
+    /* ===== LAYOUT: DUAS COLUNAS (igual à imagem de referência) ===== */
+    .page {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      height: 100vh;
+      width: 100vw;
+      overflow: hidden;
+    }
+
+    /* ===== COLUNA ESQUERDA — fundo escuro com padrão ===== */
+    .col-left {
+      position: relative;
+      background-color: #2b1510;
+      background-image: url('pattern-bg.png'); /* padrão decorativo opcional */
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: clamp(36px, 6vw, 80px) clamp(32px, 5vw, 72px);
+      text-align: center;
+
+      /* Padrão circular decorativo no fundo (replica o efeito da imagem) */
+      background-image:
+        radial-gradient(circle at 20% 80%, rgba(90,40,20,0.55) 0%, transparent 55%),
+        radial-gradient(circle at 80% 20%, rgba(70,30,10,0.4) 0%, transparent 50%);
+    }
+
+    /* Overlay para garantir legibilidade */
+    .col-left::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      /* replica o padrão de espiral/mandala visível na imagem */
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='480' height='480' viewBox='0 0 480 480'%3E%3Ccircle cx='240' cy='240' r='210' fill='none' stroke='rgba(120,60,30,0.18)' stroke-width='1.5'/%3E%3Ccircle cx='240' cy='240' r='170' fill='none' stroke='rgba(120,60,30,0.14)' stroke-width='1.2'/%3E%3Ccircle cx='240' cy='240' r='130' fill='none' stroke='rgba(120,60,30,0.12)' stroke-width='1'/%3E%3Ccircle cx='240' cy='240' r='90' fill='none' stroke='rgba(120,60,30,0.10)' stroke-width='1'/%3E%3Ccircle cx='240' cy='240' r='50' fill='none' stroke='rgba(120,60,30,0.08)' stroke-width='1'/%3E%3Cpath d='M240 30 Q320 100 240 240 Q160 100 240 30Z' fill='none' stroke='rgba(120,60,30,0.10)' stroke-width='1'/%3E%3Cpath d='M450 240 Q380 320 240 240 Q380 160 450 240Z' fill='none' stroke='rgba(120,60,30,0.10)' stroke-width='1'/%3E%3Cpath d='M240 450 Q160 380 240 240 Q320 380 240 450Z' fill='none' stroke='rgba(120,60,30,0.10)' stroke-width='1'/%3E%3Cpath d='M30 240 Q100 160 240 240 Q100 320 30 240Z' fill='none' stroke='rgba(120,60,30,0.10)' stroke-width='1'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: left -60px center;
+      background-size: 600px 600px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ===== CONTEÚDO DA COLUNA ESQUERDA ===== */
+    .col-left-content {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    /* ===== TÍTULO ===== */
+    .title-construcao {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(2.2rem, 4.5vw, 5rem);
+      line-height: 0.92;
+      color: var(--white-warm);
+      text-transform: uppercase;
+      margin-bottom: clamp(28px, 4vw, 52px);
+      letter-spacing: 0.01em;
+      animation: fadeInUp 0.7s ease both;
+    }
+
+    /* ===== BODY TEXT ===== */
+    .construcao-body {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(0.8rem, 1.05vw, 1.1rem);
+      font-weight: 500;
+      line-height: 1.85;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: rgba(255, 253, 249, 0.88);
+      max-width: 400px;
+      text-align: center;
+      margin-bottom: clamp(28px, 4vw, 52px);
+      animation: fadeInUp 0.7s 0.12s ease both;
+    }
+
+    /* ===== AGRADECIMENTO em script ===== */
+    .script-thanks {
+      font-family: 'Allura', cursive;
+      font-size: clamp(1.8rem, 3vw, 3.6rem);
+      color: var(--white-warm);
+      font-weight: 400;
+      line-height: 1;
+      margin-bottom: clamp(28px, 4vw, 52px);
+      animation: fadeInUp 0.7s 0.22s ease both;
+    }
+
+    /* ===== BOTÃO ===== */
+    .btn-voltar {
+      display: inline-block;
+      padding: 14px 36px;
+      border: 2px solid var(--taupe-soft);
+      border-radius: 999px;
+      background: rgba(162, 139, 119, 0.18);
+      color: var(--white-warm);
+      font-family: 'Allura', cursive;
+      font-size: clamp(1.1rem, 1.5vw, 1.6rem);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      cursor: pointer;
+      transition: background 0.25s, color 0.25s, transform 0.2s;
+      animation: fadeInUp 0.7s 0.32s ease both;
+    }
+
+    .btn-voltar:hover {
+      background: var(--taupe-soft);
+      color: var(--brown-deep);
+      transform: translateY(-2px);
+    }
+
+    /* ===== COLUNA DIREITA — imagem de fundo ===== */
+    .col-right {
+      position: relative;
+      overflow: hidden;
+      background-color: #d4cfc8;
+    }
+
+    .col-right img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center center;
+      display: block;
+    }
+
+    /* ===== ANIMAÇÕES ===== */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ===== RESPONSIVO ===== */
+    @media (max-width: 780px) {
+      .page {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto;
+        height: auto;
+        overflow: auto;
+      }
+
+      html, body { overflow: auto; }
+
+      .col-left {
+        padding: 44px 24px 48px;
+        min-height: 100vh;
+      }
+
+      .col-right {
+        height: 55vw;
+        min-height: 260px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <!-- COLUNA ESQUERDA: texto -->
+    <div class="col-left">
+      <div class="col-left-content">
+        <h1 class="title-construcao">Pagina em<br>Construção!!</h1>
+
+        <p class="construcao-body">
+          Nós da Reciclothes lamentamos o ocorrido.<br>
+          A perfeição exige tempo e muito trabalho duro,<br>
+          logo menos nos encontraremos<br>
+          com a pagina completa
+        </p>
+
+        <p class="script-thanks">agradeçemos a compreenção.</p>
+
+        <a href="index.html" class="btn-voltar">volte para a página inicial</a>
+      </div>
+    </div>
+
+    <!-- COLUNA DIREITA: imagem -->
+    <div class="col-right">
+      <img src="img/14.png" alt="Imagem Reciclothes" />
+    </div>
+
+  </div>
+</body>
+</html>
